@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y build-essential \
 	python2.7-dev \
 	python-numpy \
 	python-matplotlib \
-	wget
+	wget \
+	python-pip
 
 # Install htseq-count from http
 WORKDIR /user/local/
@@ -21,6 +22,10 @@ RUN tar -zxvf HTSeq-0.6.1p1.tar.gz
 WORKDIR HTSeq-0.6.1p1/
 RUN python setup.py install --user
 RUN chmod +x scripts/htseq-count
+
+# Install htseq-count python dependencies using pip
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir htseq
 
 # add htseq-count to path
 ENV PATH /user/local/HTSeq-0.6.1p1/scripts:$PATH
