@@ -26,6 +26,13 @@ RUN chmod +x scripts/htseq-count
 ENV PATH /user/local/HTSeq-0.6.1p1/scripts:$PATH
 
 # Cleanup
-WORKDIR /
 RUN rm -rf /user/local/HTSeq-0.6.1p1.tar.gz
 RUN apt-get clean
+
+# Create an app user
+ENV HOME /home/user
+RUN useradd --create-home --home-dir $HOME user \
+    && chown -R user:user $HOME
+
+WORKDIR $HOME
+USER user
