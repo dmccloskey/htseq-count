@@ -22,6 +22,7 @@ RUN tar -zxvf HTSeq-0.6.1p1.tar.gz
 WORKDIR HTSeq-0.6.1p1/
 RUN python setup.py install --user
 RUN chmod +x scripts/htseq-count
+RUN chmod +x scripts/htseq-qa
 
 # Install htseq-count python dependencies using pip
 RUN pip install --upgrade pip
