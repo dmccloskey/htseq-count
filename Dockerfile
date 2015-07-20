@@ -35,10 +35,10 @@ ENV PATH /user/local/HTSeq-0.6.1p1/scripts:$PATH
 RUN rm -rf /user/local/HTSeq-0.6.1p1.tar.gz
 RUN apt-get clean
 
-## Create an app user
-#ENV HOME /home/user
+# Create an app user
+ENV HOME /home/user
 #RUN useradd --create-home --home-dir $HOME user \
 #    && chown -R user:user $HOME
 
-#WORKDIR $HOME
+WORKDIR $HOME
 #USER user
