@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y build-essential \
 	python-pip
 
 # Install htseq-count from http
-WORKDIR /user/local/
+WORKDIR /usr/local/
 RUN wget --no-check-certificate https://pypi.python.org/packages/source/H/HTSeq/HTSeq-0.6.1p1.tar.gz
 RUN tar -zxvf HTSeq-0.6.1p1.tar.gz
 WORKDIR HTSeq-0.6.1p1/
@@ -29,10 +29,10 @@ RUN pip install --upgrade pip
 RUN pip install --no-cache-dir HTSeq
 
 # add htseq-count to path
-ENV PATH /user/local/HTSeq-0.6.1p1/scripts:$PATH
+ENV PATH /usr/local/HTSeq-0.6.1p1/scripts:$PATH
 
 # Cleanup
-RUN rm -rf /user/local/HTSeq-0.6.1p1.tar.gz
+RUN rm -rf /usr/local/HTSeq-0.6.1p1.tar.gz
 RUN apt-get clean
 
 # Create an app user
